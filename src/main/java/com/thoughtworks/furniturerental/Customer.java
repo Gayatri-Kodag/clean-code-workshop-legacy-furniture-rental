@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Customer {
     private String name;
-    private List<Rental> rentals = new ArrayList<Rental>();
+    private Rentals rentals = new Rentals();
 
     public Customer(String name) {
         this.name = name;
