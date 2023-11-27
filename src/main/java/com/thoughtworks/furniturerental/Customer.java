@@ -1,8 +1,5 @@
 package com.thoughtworks.furniturerental;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Customer {
     private String name;
     private Rentals rentals = new Rentals();
@@ -25,7 +22,7 @@ public class Customer {
             result += "\t" + rental.getFurniture().getTitle() + "\t" +
                     rental.amount() + "\n";
         }
-        result += "Amount owed is " + totalAmount() + "\n";
+        result += "Amount owed is " + rentals.totalAmount() + "\n";
         result += "You earned " + totalFrequentRenterPoints()
                 + " frequent renter points";
         return result;
@@ -37,14 +34,6 @@ public class Customer {
             frequentRenterPoints += rental.frequentRenterPoints();
         }
         return frequentRenterPoints;
-    }
-
-    private double totalAmount() {
-        double totalAmount = 0;
-        for (Rental rental : rentals) {
-            totalAmount += rental.amount();
-        }
-        return totalAmount;
     }
 
 }
