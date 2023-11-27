@@ -24,7 +24,7 @@ public class Customer {
         int frequentRenterPoints = 0;
         String result = "Rental Record for " + getName() + "\n";
         for (Rental rental : rentals) {
-            double thisAmount = amountFor(rental);
+            double thisAmount = rental.amount();
             // add frequent renter points
             frequentRenterPoints++;
             // add bonus for a two days new launch rental
@@ -45,24 +45,4 @@ public class Customer {
         return result;
     }
 
-    private static double amountFor(Rental rental) {
-        double thisAmount = 0;
-        //determine amounts for rental line
-        switch (rental.getFurniture().getPriceCode()) {
-            case Furniture.REGULAR:
-                thisAmount += 200;
-                if (rental.getDaysRented() > 2)
-                    thisAmount += (rental.getDaysRented() - 2) * 150;
-                break;
-            case Furniture.NEW_LAUNCH:
-                thisAmount += rental.getDaysRented() * 300;
-                break;
-            case Furniture.CHILDREN:
-                thisAmount += 150;
-                if (rental.getDaysRented() > 3)
-                    thisAmount += (rental.getDaysRented() - 3) * 150;
-                break;
-        }
-        return thisAmount;
-    }
 }
