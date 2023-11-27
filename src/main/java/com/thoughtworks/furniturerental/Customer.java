@@ -22,12 +22,9 @@ public class Customer {
     public String statement() {
         String result = "Rental Record for " + getName() + "\n";
         for (Rental rental : rentals) {
-            //show figures for this rental
             result += "\t" + rental.getFurniture().getTitle() + "\t" +
                     rental.amount() + "\n";
         }
-
-        //add footer lines result
         result += "Amount owed is " + totalAmount() + "\n";
         result += "You earned " + totalFrequentRenterPoints()
                 + " frequent renter points";
