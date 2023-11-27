@@ -17,15 +17,15 @@ public class CustomerTest {
     void shouldGenerateStatement() {
         // Arrange
         Customer customer = new Customer("John Doe");
-        Rental chairRental = new Rental(new Furniture("Chair", 0), 0);
-        Rental tableRental = new Rental(new Furniture("Table", 1), 0);
+        Rental chairRental = new Rental(new Furniture("Chair", 0), 1);
+        Rental tableRental = new Rental(new Furniture("Table", 1), 2);
         customer.addRental(chairRental);
         customer.addRental(tableRental);
         String expectedStatement = "Rental Record for John Doe\n" +
                 "\tChair\t200.0\n" +
-                "\tTable\t0.0\n" +
-                "Amount owed is 200.0\n" +
-                "You earned 2 frequent renter points";
+                "\tTable\t600.0\n" +
+                "Amount owed is 800.0\n" +
+                "You earned 3 frequent renter points";
 
         // Act
         String actualStatement = customer.statement();
