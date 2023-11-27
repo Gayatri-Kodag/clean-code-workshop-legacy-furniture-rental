@@ -10,4 +10,12 @@ public class Rentals extends ArrayList<Rental> {
         }
         return totalAmount;
     }
+
+    public int totalFrequentRenterPoints() {
+        int frequentRenterPoints = 0;
+        for (Rental rental : this) {
+            frequentRenterPoints += rental.frequentRenterPoints();
+        }
+        return frequentRenterPoints;
+    }
 }

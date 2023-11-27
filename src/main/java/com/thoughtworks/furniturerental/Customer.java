@@ -23,17 +23,9 @@ public class Customer {
                     rental.amount() + "\n";
         }
         result += "Amount owed is " + rentals.totalAmount() + "\n";
-        result += "You earned " + totalFrequentRenterPoints()
+        result += "You earned " + rentals.totalFrequentRenterPoints()
                 + " frequent renter points";
         return result;
-    }
-
-    private int totalFrequentRenterPoints() {
-        int frequentRenterPoints = 0;
-        for (Rental rental : rentals) {
-            frequentRenterPoints += rental.frequentRenterPoints();
-        }
-        return frequentRenterPoints;
     }
 
 }
