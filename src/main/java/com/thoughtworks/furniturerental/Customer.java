@@ -23,17 +23,17 @@ public class Customer {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
         String result = "Rental Record for " + getName() + "\n";
-        for (Rental each : rentals) {
-            double thisAmount = amountFor(each);
+        for (Rental rental : rentals) {
+            double thisAmount = amountFor(rental);
             // add frequent renter points
             frequentRenterPoints++;
             // add bonus for a two days new launch rental
-            if ((each.getFurniture().getPriceCode() == Furniture.NEW_LAUNCH)
+            if ((rental.getFurniture().getPriceCode() == Furniture.NEW_LAUNCH)
                     &&
-                    each.getDaysRented() > 1) frequentRenterPoints++;
+                    rental.getDaysRented() > 1) frequentRenterPoints++;
 
             //show figures for this rental
-            result += "\t" + each.getFurniture().getTitle() + "\t" +
+            result += "\t" + rental.getFurniture().getTitle() + "\t" +
                     thisAmount + "\n";
             totalAmount += thisAmount;
         }
@@ -45,22 +45,22 @@ public class Customer {
         return result;
     }
 
-    private static double amountFor(Rental each) {
+    private static double amountFor(Rental rental) {
         double thisAmount = 0;
-        //determine amounts for each line
-        switch (each.getFurniture().getPriceCode()) {
+        //determine amounts for rental line
+        switch (rental.getFurniture().getPriceCode()) {
             case Furniture.REGULAR:
                 thisAmount += 200;
-                if (each.getDaysRented() > 2)
-                    thisAmount += (each.getDaysRented() - 2) * 150;
+                if (rental.getDaysRented() > 2)
+                    thisAmount += (rental.getDaysRented() - 2) * 150;
                 break;
             case Furniture.NEW_LAUNCH:
-                thisAmount += each.getDaysRented() * 300;
+                thisAmount += rental.getDaysRented() * 300;
                 break;
             case Furniture.CHILDREN:
                 thisAmount += 150;
-                if (each.getDaysRented() > 3)
-                    thisAmount += (each.getDaysRented() - 3) * 150;
+                if (rental.getDaysRented() > 3)
+                    thisAmount += (rental.getDaysRented() - 3) * 150;
                 break;
         }
         return thisAmount;
