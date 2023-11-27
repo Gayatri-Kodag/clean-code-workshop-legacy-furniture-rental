@@ -28,4 +28,15 @@ public class Customer {
         return result;
     }
 
+    public String htmlStatement() {
+        String result = "<h1>Rental Record for <b>" + getName() + "</b></h1>\n";
+        for (Rental rental : rentals) {
+            result += "\t<br>" + rental.getFurniture().getTitle() + "\t" +
+                    rental.amount() + "</br>\n";
+        }
+        result += "Amount owed is <b>" + rentals.totalAmount() + "</b>\n";
+        result += "You earned <b>" + rentals.totalFrequentRenterPoints()
+                + "</b> frequent renter points";
+        return result;
+    }
 }

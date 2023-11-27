@@ -33,4 +33,25 @@ public class CustomerTest {
         // Assert
         assertEquals(expectedStatement, actualStatement);
     }
+
+    @Test
+    void shouldGenerateHTMLStatement() {
+        // Arrange
+        Customer customer = new Customer("John Doe");
+        Rental chairRental = new Rental(new Furniture("Chair", 0), 1);
+        Rental tableRental = new Rental(new Furniture("Table", 1), 2);
+        customer.addRental(chairRental);
+        customer.addRental(tableRental);
+        String expectedStatement = "<h1>Rental Record for <b>John Doe</b></h1>\n" +
+                "\t<br>Chair\t200.0</br>\n" +
+                "\t<br>Table\t600.0</br>\n" +
+                "Amount owed is <b>800.0</b>\n" +
+                "You earned <b>3</b> frequent renter points";
+
+        // Act
+        String actualStatement = customer.htmlStatement();
+
+        // Assert
+        assertEquals(expectedStatement, actualStatement);
+    }
 }
