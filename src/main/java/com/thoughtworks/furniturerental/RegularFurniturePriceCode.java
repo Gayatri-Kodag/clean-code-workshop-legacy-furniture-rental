@@ -14,4 +14,9 @@ public class RegularFurniturePriceCode extends FurniturePriceCode{
             amount += (daysRented - 2) * 150;
         return amount;
     }
-}
+
+    @Override
+    int frequentRenterPoints(int daysRented) {
+        return 1;
+    }
+ }

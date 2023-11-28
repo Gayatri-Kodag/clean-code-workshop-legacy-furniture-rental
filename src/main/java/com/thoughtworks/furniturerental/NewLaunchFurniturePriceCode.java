@@ -12,4 +12,10 @@ public class NewLaunchFurniturePriceCode extends FurniturePriceCode{
         amount += daysRented * 300;
         return amount;
     }
+
+    @Override
+    int frequentRenterPoints(int daysRented) {
+        if (daysRented > 1) return 2;
+        return 1;
+    }
 }
