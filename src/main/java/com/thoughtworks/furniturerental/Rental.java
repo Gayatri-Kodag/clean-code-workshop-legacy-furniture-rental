@@ -11,24 +11,7 @@ public class Rental {
     }
 
     public double amount() {
-        double thisAmount = 0;
-        //determine amounts for rental line
-        switch (furniture.getPriceCode()) {
-            case Furniture.REGULAR:
-                thisAmount += 200;
-                if (daysRented > 2)
-                    thisAmount += (daysRented - 2) * 150;
-                break;
-            case Furniture.NEW_LAUNCH:
-                thisAmount += daysRented * 300;
-                break;
-            case Furniture.CHILDREN:
-                thisAmount += 150;
-                if (daysRented > 3)
-                    thisAmount += (daysRented - 3) * 150;
-                break;
-        }
-        return thisAmount;
+        return getFurniture().amount(daysRented);
     }
 
     public int getDaysRented() {
