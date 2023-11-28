@@ -6,19 +6,29 @@ public class Furniture {
     public static final int CHILDREN = 2;
 
     private String title;
-    private int priceCode;
+    private FurniturePriceCode furniturePriceCode;
 
     public Furniture(String title, int priceCode) {
         this.title = title;
-        this.priceCode = priceCode;
+        setFurniturePriceCode(priceCode);
     }
 
-    public int getPriceCode() {
-        return priceCode;
+    public int getFurniturePriceCode() {
+        return furniturePriceCode.getPriceCode();
     }
 
-    public void setPriceCode(int arg) {
-        priceCode = arg;
+    public void setFurniturePriceCode(int priceCode) {
+        switch (priceCode) {
+            case REGULAR:
+                furniturePriceCode = new RegularFurniturePriceCode();
+                break;
+            case NEW_LAUNCH:
+                furniturePriceCode = new NewLaunchFurniturePriceCode();
+                break;
+            case CHILDREN:
+                furniturePriceCode = new ChildrenFurniturePriceCode();
+                break;
+        }
     }
 
     public String getTitle() {
@@ -28,7 +38,7 @@ public class Furniture {
     public double amount(int daysRented) {
         double thisAmount = 0;
         //determine amounts for rental line
-        switch (getPriceCode()) {
+        switch (getFurniturePriceCode()) {
             case Furniture.REGULAR:
                 thisAmount += 200;
                 if (daysRented > 2)
@@ -48,7 +58,7 @@ public class Furniture {
 
     public int frequentRenterPoints(int daysRented) {
         // add bonus for a two days new launch rental
-        if ((getPriceCode() == Furniture.NEW_LAUNCH)
+        if ((getFurniturePriceCode() == Furniture.NEW_LAUNCH)
                 &&
                 daysRented > 1) return 2;
         return 1;
