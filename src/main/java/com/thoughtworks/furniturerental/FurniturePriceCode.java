@@ -7,10 +7,5 @@ abstract public class FurniturePriceCode {
 
     abstract double amountFor(int daysRented);
 
-    int frequentRenterPointsFor(int daysRented) {
-        if ((getPriceCode() == NEW_LAUNCH)
-                &&
-                daysRented > 1) return 2;
-        return 1;
-    }
+    abstract int frequentRenterPointsFor(int daysRented);
 }

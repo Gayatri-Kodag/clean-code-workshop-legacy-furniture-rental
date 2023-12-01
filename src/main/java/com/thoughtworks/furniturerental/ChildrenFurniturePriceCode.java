@@ -14,4 +14,9 @@ public class ChildrenFurniturePriceCode extends FurniturePriceCode{
             amount += (daysRented - 3) * 150;
         return amount;
     }
+
+    @Override
+    int frequentRenterPointsFor(int daysRented) {
+        return 1;
+    }
 }

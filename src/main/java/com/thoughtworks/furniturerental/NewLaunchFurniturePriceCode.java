@@ -1,5 +1,7 @@
 package com.thoughtworks.furniturerental;
 
+import static com.thoughtworks.furniturerental.Furniture.NEW_LAUNCH;
+
 public class NewLaunchFurniturePriceCode extends FurniturePriceCode{
     @Override
     int getPriceCode() {
@@ -9,5 +11,10 @@ public class NewLaunchFurniturePriceCode extends FurniturePriceCode{
     @Override
     double amountFor(int daysRented) {
         return daysRented * 300;
+    }
+
+    @Override
+    int frequentRenterPointsFor(int daysRented) {
+        return 2;
     }
 }
