@@ -24,13 +24,12 @@ public class Customer {
         int frequentRenterPoints = 0;
         String result = "Rental Record for " + getName() + "\n";
         for (Rental rental : rentals) {
-            double thisAmount = amountFor(rental);
             frequentRenterPoints += frequentRenterPointsFor(rental);
 
             //show figures for this rental
             result += "\t" + rental.getFurniture().getTitle() + "\t" +
-                    thisAmount + "\n";
-            totalAmount += thisAmount;
+                    rental.amount() + "\n";
+            totalAmount += rental.amount();
         }
 
         //add footer lines result
@@ -48,23 +47,4 @@ public class Customer {
         return 1;
     }
 
-    private static double amountFor(Rental rental) {
-        double amount = 0;
-        switch (rental.getFurniture().getPriceCode()) {
-            case Furniture.REGULAR:
-                amount += 200;
-                if (rental.getDaysRented() > 2)
-                    amount += (rental.getDaysRented() - 2) * 150;
-                break;
-            case Furniture.NEW_LAUNCH:
-                amount += rental.getDaysRented() * 300;
-                break;
-            case Furniture.CHILDREN:
-                amount += 150;
-                if (rental.getDaysRented() > 3)
-                    amount += (rental.getDaysRented() - 3) * 150;
-                break;
-        }
-        return amount;
-    }
 }
