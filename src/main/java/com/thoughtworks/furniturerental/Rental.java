@@ -24,9 +24,7 @@ public class Rental {
 
     public int frequentRenterPoints() {
         // add bonus for a two days new launch rental
-        if ((getFurniture().getPriceCode() == Furniture.NEW_LAUNCH)
-                &&
-                getDaysRented() > 1) return 2;
-        return 1;
+        return furniture.frequentRenterPointsFor(daysRented);
     }
+
 }

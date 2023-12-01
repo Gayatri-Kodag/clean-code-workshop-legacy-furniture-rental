@@ -44,4 +44,11 @@ public class Furniture {
         }
         return amount;
     }
+
+    public int frequentRenterPointsFor(int daysRented) {
+        if ((getPriceCode() == NEW_LAUNCH)
+                &&
+                daysRented > 1) return 2;
+        return 1;
+    }
 }
