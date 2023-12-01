@@ -5,6 +5,8 @@ public class Furniture {
     public static final int NEW_LAUNCH = 1;
     public static final int CHILDREN = 2;
 
+    public static final int LUXURY = 3;
+
     private String title;
     private FurniturePriceCode furniturePriceCode;
 
@@ -27,6 +29,9 @@ public class Furniture {
                 break;
             case CHILDREN:
                 furniturePriceCode = new ChildrenFurniturePriceCode();
+                break;
+            case LUXURY:
+                furniturePriceCode = new LuxuryFurniturePriceCode();
                 break;
         }
     }
