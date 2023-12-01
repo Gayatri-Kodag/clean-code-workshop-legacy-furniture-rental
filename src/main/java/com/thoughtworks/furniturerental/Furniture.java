@@ -6,19 +6,29 @@ public class Furniture {
     public static final int CHILDREN = 2;
 
     private String title;
-    private int priceCode;
+    private FurniturePriceCode furniturePriceCode;
 
     public Furniture(String title, int priceCode) {
         this.title = title;
-        this.priceCode = priceCode;
+        setPriceCode(priceCode);
     }
 
     public int getPriceCode() {
-        return priceCode;
+        return furniturePriceCode.getPriceCode();
     }
 
     public void setPriceCode(int arg) {
-        priceCode = arg;
+        switch (arg) {
+            case REGULAR:
+                furniturePriceCode = new RegularFurniturePriceCode();
+                break;
+            case NEW_LAUNCH:
+                furniturePriceCode = new NewLaunchFurniturePriceCode();
+                break;
+            case CHILDREN:
+                furniturePriceCode = new ChildrenFurniturePriceCode();
+                break;
+        }
     }
 
     public String getTitle() {
